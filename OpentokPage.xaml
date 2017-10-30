@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:UIKit;assembly=Xamarin.iOS;targetPlatform=iOS"
+    xmlns:ioss="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:androidWidget="clr-namespace:Android.Widget;assembly=Mono.Android;targetPlatform=Android"
+    xmlns:formsAndroid="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.Platform.Android;targetPlatform=Android"
+    x:Class="SAPTest.OpentokPage">
+
+    <AbsoluteLayout
+        VerticalOptions="FillAndExpand"
+        HorizontalOptions="FillAndExpand"
+        BackgroundColor="Navy">
+        
+        <Grid
+            AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+            AbsoluteLayout.LayoutFlags="All" Margin="70">
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*" />
+                <RowDefinition Height="5*" />
+            </Grid.RowDefinitions>
+
+            <Frame x:Name="LocalFrame" Grid.Row="0" HorizontalOptions="Fill"
+                HasShadow="false" CornerRadius="117" Padding="0" Margin="0, 0, 0, 28" IsClippedToBounds="true">
+                
+                <AbsoluteLayout>
+                    
+                    <ContentView x:Name="LocalContainer"
+                        AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                        AbsoluteLayout.LayoutFlags="All">
+                        <ios:UIView/>
+                        <androidWidget:FrameLayout x:Arguments="{x:Static formsAndroid:Forms.Context}"/>
+                    </ContentView>
+
+                    <BoxView x:Name="boxView" ioss:VisualElement.BlurEffect="Dark"
+                        AbsoluteLayout.LayoutFlags="All"
+                        AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                    HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                    
+                </AbsoluteLayout>
+            </Frame>
+
+            <Frame x:Name="RemoteFrame" Grid.Row="1" HorizontalOptions="Fill"
+                OutlineColor="Silver" CornerRadius="115" Padding="0" Margin="0, 28, 0, 0" IsClippedToBounds="true">
+
+                <AbsoluteLayout>
+                    
+                    <ContentView x:Name="RemoteContainer"
+                        AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                        AbsoluteLayout.LayoutFlags="All">
+                        <ios:UIView/>
+                        <androidWidget:FrameLayout x:Arguments="{x:Static formsAndroid:Forms.Context}"/>
+                    </ContentView>
+
+                    <BoxView x:Name="boxView2" ioss:VisualElement.BlurEffect="Light"
+                        AbsoluteLayout.LayoutFlags="All"
+                        AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                    HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+
+                </AbsoluteLayout>
+            </Frame>
+        </Grid>
+
+        <StackLayout
+            x:Name="BusyViewLayer"
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+            AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1">
+            
+            <ActivityIndicator
+                x:Name="BusyIndicatorView"
+                IsRunning="true"
+                Color="Black"/>
+            
+        </StackLayout>
+    </AbsoluteLayout>
+    
+</ContentPage>
